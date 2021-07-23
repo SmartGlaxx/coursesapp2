@@ -1,0 +1,152 @@
+body {
+  background: #D1D8EC;  
+}
+
+a{
+  text-decoration: none;
+  color:  #eee;
+}
+
+
+.product-name, .product-desc{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.product-desc{
+  color: #516674;
+  font-size: 0.8rem;
+}
+
+.product{
+  width: 100%;
+  margin: 0;
+  /* background: rgba( 255, 255, 255, 0.40 ); */
+  box-shadow: 0 3px 12px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2.5px );
+  -webkit-backdrop-filter: blur( 2.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  position:  relative;
+  padding: 2rem 0;
+  background-color: #fff;
+  z-index: 0;
+}
+
+
+
+.addshopform{
+  height: 15rem;
+   padding:  2rem;
+  background: rgba( 255, 255, 255, 0.40 );
+  box-shadow: 0 3px 10px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 7.0px );
+  -webkit-backdrop-filter: blur( 7.0px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  z-index : 12;
+  position: relative;
+  font-size: 1rem;
+}
+.addshopform2{
+  height: 24rem;
+   padding:  2rem;
+  background: rgba( 255, 255, 255, 0.40 );
+  box-shadow: 0 3px 10px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 7.0px );
+  -webkit-backdrop-filter: blur( 7.0px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  z-index : 12;
+  position: relative;
+  font-size: 1rem;
+}
+.addshopform3{
+  height: 11rem;
+   padding:  2rem;
+  background: rgba( 255, 255, 255, 0.40 );
+  box-shadow: 0 3px 10px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 7.0px );
+  -webkit-backdrop-filter: blur( 7.0px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  z-index : 12;
+  position: relative;
+  font-size: 1rem;
+}
+
+
+.navbar{
+  height:  8.5rem;
+  overflow: hidden;
+  background: navy;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left : 0;
+  z-index: 10;
+}
+.paystack-btn{
+/*  box-shadow: 0 3px 10px 0 rgba( 31, 38, 135, 0.37 );
+  background : rgba(20, 255, 20, 0.25);
+  cursor : pointer;
+  font-weight: 600;
+  font-size: 1.03rem;
+  fontSize : 0.8rem;
+  backdropFilter: blur( 4px );
+  webkitBackdropFilter: blur( 4px );
+  borderRadius: 3px;
+  padding : 0.6rem;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  position : absolute;
+  right: 3rem;
+  bottom: 3rem;
+  z-index : 11*/
+}
+
+.slideImage{
+  transform : translateX(300%);
+  transition:  All 2s;
+}
+
+.pageSection{
+  /*padding: 0 10%;*/
+  position: relative;
+}
+.backgnd{
+  width : 100%;
+  height: auto;
+  position: fixed; 
+  top: 5rem;
+  margin: 0;
+  z-index: -1;
+}
+.main{
+  height: auto;
+  margin-top: 25rem;
+  background: rgba(22, 45, 150, 0.5);
+  width: 100%;
+  z-index: 1;
+  padding:  0rem;
+  padding-bottom: 2vh;
+  position: relative;
+}
+
+@media screen and (max-width: 888px){
+  .pageSection{padding: 0;}
+}
+@media screen and (max-width: 767px){
+  .main{margin-top: 15rem}
+}
+
+@media screen and (max-width: 500px){
+  .product{width : 100% }
+  .backgnd{margin-top: 3rem;}
+}
+@media screen and (max-width: 310px){
+ .main{margin-top: 12rem;} 
+}
+@media screen and (max-width: 230px){
+ .main{margin-top: 10rem;} 
+}
+
