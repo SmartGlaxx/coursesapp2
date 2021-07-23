@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/static/css/main.78c62527.chunk.css",
+    "main.js": "/static/js/main.e5e811ff.chunk.js",
+    "main.js.map": "/static/js/main.e5e811ff.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.66c39a7c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.66c39a7c.js.map",
+    "static/css/2.a82c9e4e.chunk.css": "/static/css/2.a82c9e4e.chunk.css",
+    "static/js/2.2c1f0d8f.chunk.js": "/static/js/2.2c1f0d8f.chunk.js",
+    "static/js/2.2c1f0d8f.chunk.js.map": "/static/js/2.2c1f0d8f.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.8c6a5fe50d1bcf2b764c2938e93ec39b.js": "/precache-manifest.8c6a5fe50d1bcf2b764c2938e93ec39b.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.a82c9e4e.chunk.css.map": "/static/css/2.a82c9e4e.chunk.css.map",
+    "static/css/main.78c62527.chunk.css.map": "/static/css/main.78c62527.chunk.css.map",
+    "static/js/2.2c1f0d8f.chunk.js.LICENSE.txt": "/static/js/2.2c1f0d8f.chunk.js.LICENSE.txt",
+    "static/media/Node.jpg": "/static/media/Node.febc58d3.jpg",
+    "static/media/appstore.png": "/static/media/appstore.594d2327.png",
+    "static/media/backgnd.jpg": "/static/media/backgnd.7885e720.jpg",
+    "static/media/flutter.jpg": "/static/media/flutter.487511e7.jpg",
+    "static/media/lady2.png": "/static/media/lady2.43fa74a6.png",
+    "static/media/logo.svg": "/static/media/logo.5d5d9eef.svg",
+    "static/media/logo.png": "/static/media/logo.d493f1d2.png",
+    "static/media/man.png": "/static/media/man.09ffdef2.png",
+    "static/media/python.jpg": "/static/media/python.d7f85de0.jpg",
+    "static/media/react.png": "/static/media/react.adad73b3.png",
+    "static/media/index.css": "/static/media/roboto-vietnamese-400-normal.a8be5b46.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.66c39a7c.js",
+    "static/css/2.a82c9e4e.chunk.css",
+    "static/js/2.2c1f0d8f.chunk.js",
+    "static/css/main.78c62527.chunk.css",
+    "static/js/main.e5e811ff.chunk.js"
+  ]
+}
