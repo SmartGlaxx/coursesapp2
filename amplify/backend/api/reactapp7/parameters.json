@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "reactapp7",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authreactapp7df1f4c73",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
