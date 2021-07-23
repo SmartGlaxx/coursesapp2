@@ -1,0 +1,416 @@
+type Shop {
+  id: ID!
+  name: String!
+  products(filter: ModelProductFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelProductConnection
+  tags: [String]
+  owner: String!
+  createdAt: String!
+  updatedAt: AWSDateTime!
+}
+
+type Product {
+  id: ID!
+  name: String!
+  description: String!
+  shop: Shop
+  file: S3object
+  owner: String!
+  price: Float!
+  createdAt: String!
+  updatedAt: AWSDateTime!
+}
+
+type S3object {
+  bucket: String!
+  region: String!
+  key: String!
+}
+
+type User {
+  id: ID!
+  username: String!
+  email: String!
+  registered: Boolean!
+  orders(filter: ModelOrderFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelOrderConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Order {
+  id: ID!
+  product: Product
+  user: User
+  createdAt: String!
+  updatedAt: AWSDateTime!
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelShopConnection {
+  items: [Shop]
+  nextToken: String
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+input ModelShopFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  tags: ModelStringInput
+  owner: ModelStringInput
+  createdAt: ModelStringInput
+  and: [ModelShopFilterInput]
+  or: [ModelShopFilterInput]
+  not: ModelShopFilterInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+type Query {
+  getShop(id: ID!): Shop
+  listShops(filter: ModelShopFilterInput, limit: Int, nextToken: String): ModelShopConnection
+  getProduct(id: ID!): Product
+  listProducts(filter: ModelProductFilterInput, limit: Int, nextToken: String): ModelProductConnection
+  getUser(id: ID!): User
+  searchShops(filter: SearchableShopFilterInput, sort: SearchableShopSortInput, limit: Int, nextToken: String, from: Int): SearchableShopConnection
+}
+
+input CreateShopInput {
+  id: ID
+  name: String!
+  tags: [String]
+  owner: String!
+  createdAt: String
+}
+
+input UpdateShopInput {
+  id: ID!
+  name: String
+  tags: [String]
+  owner: String
+  createdAt: String
+}
+
+input DeleteShopInput {
+  id: ID!
+}
+
+type Mutation {
+  createShop(input: CreateShopInput!, condition: ModelShopConditionInput): Shop
+  updateShop(input: UpdateShopInput!, condition: ModelShopConditionInput): Shop
+  deleteShop(input: DeleteShopInput!, condition: ModelShopConditionInput): Shop
+  createProduct(input: CreateProductInput!, condition: ModelProductConditionInput): Product
+  updateProduct(input: UpdateProductInput!, condition: ModelProductConditionInput): Product
+  deleteProduct(input: DeleteProductInput!, condition: ModelProductConditionInput): Product
+  registerUser(input: CreateUserInput!, condition: ModelUserConditionInput): User
+  updateUser(input: UpdateUserInput!, condition: ModelUserConditionInput): User
+  createOrder(input: CreateOrderInput!, condition: ModelOrderConditionInput): Order
+}
+
+input ModelShopConditionInput {
+  name: ModelStringInput
+  tags: ModelStringInput
+  owner: ModelStringInput
+  createdAt: ModelStringInput
+  and: [ModelShopConditionInput]
+  or: [ModelShopConditionInput]
+  not: ModelShopConditionInput
+}
+
+type Subscription {
+  onCreateShop: Shop @aws_subscribe(mutations: ["createShop"])
+  onUpdateShop: Shop @aws_subscribe(mutations: ["updateShop"])
+  onDeleteShop: Shop @aws_subscribe(mutations: ["deleteShop"])
+  onCreateProduct: Product @aws_subscribe(mutations: ["createProduct"])
+  onUpdateProduct: Product @aws_subscribe(mutations: ["updateProduct"])
+  onDeleteProduct: Product @aws_subscribe(mutations: ["deleteProduct"])
+}
+
+input S3objectInput {
+  bucket: String!
+  region: String!
+  key: String!
+}
+
+type ModelProductConnection {
+  items: [Product]
+  nextToken: String
+}
+
+input ModelProductFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  description: ModelStringInput
+  owner: ModelStringInput
+  price: ModelFloatInput
+  createdAt: ModelStringInput
+  and: [ModelProductFilterInput]
+  or: [ModelProductFilterInput]
+  not: ModelProductFilterInput
+}
+
+input CreateProductInput {
+  id: ID
+  name: String!
+  description: String!
+  file: S3objectInput
+  owner: String!
+  price: Float!
+  createdAt: String
+  productShopId: ID
+}
+
+input UpdateProductInput {
+  id: ID!
+  name: String
+  description: String
+  file: S3objectInput
+  owner: String
+  price: Float
+  createdAt: String
+  productShopId: ID
+}
+
+input DeleteProductInput {
+  id: ID!
+}
+
+input ModelProductConditionInput {
+  name: ModelStringInput
+  description: ModelStringInput
+  owner: ModelStringInput
+  price: ModelFloatInput
+  createdAt: ModelStringInput
+  and: [ModelProductConditionInput]
+  or: [ModelProductConditionInput]
+  not: ModelProductConditionInput
+}
+
+input CreateUserInput {
+  id: ID
+  username: String!
+  email: String!
+  registered: Boolean!
+}
+
+input UpdateUserInput {
+  id: ID!
+  username: String
+  email: String
+  registered: Boolean
+}
+
+input ModelUserConditionInput {
+  username: ModelStringInput
+  email: ModelStringInput
+  registered: ModelBooleanInput
+  and: [ModelUserConditionInput]
+  or: [ModelUserConditionInput]
+  not: ModelUserConditionInput
+}
+
+input CreateOrderInput {
+  id: ID
+  createdAt: String
+  orderProductId: ID
+  orderUserId: ID
+}
+
+input ModelOrderConditionInput {
+  createdAt: ModelStringInput
+  and: [ModelOrderConditionInput]
+  or: [ModelOrderConditionInput]
+  not: ModelOrderConditionInput
+}
+
+type ModelOrderConnection {
+  items: [Order]
+  nextToken: String
+}
+
+input ModelOrderFilterInput {
+  id: ModelIDInput
+  createdAt: ModelStringInput
+  and: [ModelOrderFilterInput]
+  or: [ModelOrderFilterInput]
+  not: ModelOrderFilterInput
+}
+
+input SearchableStringFilterInput {
+  ne: String
+  gt: String
+  lt: String
+  gte: String
+  lte: String
+  eq: String
+  match: String
+  matchPhrase: String
+  matchPhrasePrefix: String
+  multiMatch: String
+  exists: Boolean
+  wildcard: String
+  regexp: String
+  range: [String]
+}
+
+input SearchableIntFilterInput {
+  ne: Int
+  gt: Int
+  lt: Int
+  gte: Int
+  lte: Int
+  eq: Int
+  range: [Int]
+}
+
+input SearchableFloatFilterInput {
+  ne: Float
+  gt: Float
+  lt: Float
+  gte: Float
+  lte: Float
+  eq: Float
+  range: [Float]
+}
+
+input SearchableBooleanFilterInput {
+  eq: Boolean
+  ne: Boolean
+}
+
+input SearchableIDFilterInput {
+  ne: ID
+  gt: ID
+  lt: ID
+  gte: ID
+  lte: ID
+  eq: ID
+  match: ID
+  matchPhrase: ID
+  matchPhrasePrefix: ID
+  multiMatch: ID
+  exists: Boolean
+  wildcard: ID
+  regexp: ID
+  range: [ID]
+}
+
+input SearchableShopFilterInput {
+  id: SearchableIDFilterInput
+  name: SearchableStringFilterInput
+  tags: SearchableStringFilterInput
+  owner: SearchableStringFilterInput
+  createdAt: SearchableStringFilterInput
+  and: [SearchableShopFilterInput]
+  or: [SearchableShopFilterInput]
+  not: SearchableShopFilterInput
+}
+
+enum SearchableSortDirection {
+  asc
+  desc
+}
+
+enum SearchableShopSortableFields {
+  id
+  name
+  tags
+  owner
+  createdAt
+}
+
+input SearchableShopSortInput {
+  field: SearchableShopSortableFields
+  direction: SearchableSortDirection
+}
+
+type SearchableShopConnection {
+  items: [Shop]
+  nextToken: String
+  total: Int
+}

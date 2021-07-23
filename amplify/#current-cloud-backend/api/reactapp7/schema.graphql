@@ -1,0 +1,51 @@
+type Shop @model @searchable{
+id : ID!
+name : String!
+products : [Product] @connection(name: "ShopProducts", sortField : "createdAt")
+tags : [String]
+owner : String!
+createdAt : String!
+}
+
+type Product @model {
+  id : ID!
+  name : String!
+  description : String!
+  shop : Shop @connection(name: "ShopProducts")
+  file : S3object
+  owner : String!
+  price : Float!
+  createdAt : String!
+}
+
+type S3object {
+  bucket  : String!
+  region  : String!
+  key : String!
+}
+
+type User 
+@model( 
+  queries : {get : "getUser"},
+  mutations : {create : "registerUser", update : "updateUser"},
+  subscriptions : null
+  ) {
+  id : ID!
+  username : String!
+  email : String!
+  registered : Boolean!
+  orders : [Order] @connection(name: "UserOrders" , sortField : "createdAt")
+}
+
+type Order 
+@model(
+  queries : null,
+  mutations : {create : "createOrder"},
+  subscriptions : null
+)
+{
+  id : ID!
+  product : Product @connection
+  user: User @connection(name : "UserOrders")
+  createdAt : String!
+}

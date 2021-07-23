@@ -1,0 +1,14 @@
+{
+    "CreateAPIKey": 0,
+    "AppSyncApiName": "reactapp7",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authreactapp7df1f4c73",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "amplify-reactapp7-dev-55814-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/9dc51cfd287c731159435e9ef4f4d0e301ba1b3f"
+}
